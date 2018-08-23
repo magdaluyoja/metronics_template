@@ -1,0 +1,12 @@
+window.$ = window.jQuery = require('jquery');
+require('bootstrap-sass');
+require('js-cookie');
+require('bootstrap-hover-dropdown');
+require('jquery-slimscroll');
+require('block-ui');
+require('jquery.uniform');
+require('bootstrap-switch');
+require('../global/scripts/app.js');
+require('../layouts/layout/scripts/layout.js');
+require('../layouts/layout/scripts/demo.js');
+require('../layouts/global/scripts/quick-sidebar.js');
