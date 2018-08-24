@@ -15,4 +15,9 @@ mix
    .sass('public/assets/admin/sass/pages/sample.min.scss', 'public/css/admin/pages')
    .js('public/assets/admin/js/pages/sample.js','public/js/admin/pages/sample.min.js')
 
+   .sass('public/assets/admin/sass/pages/login.min.scss', 'public/css/admin/pages')
+   .js('public/assets/admin/js/pages/login.js','public/js/admin/pages/login.min.js')
+
+   .sass('public/assets/admin/sass/pages/dashboard.min.scss', 'public/css/admin/pages')
+   .js('public/assets/admin/js/pages/dashboard.js','public/js/admin/pages/dashboard.min.js')
    ;

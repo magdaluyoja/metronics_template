@@ -70,7 +70,7 @@ var Layout = function() {
     var handleSidebarMenu = function() {
         $('.page-sidebar').on('click', 'li > a', function(e) {
 
-            if (App.getViewPort().width >= resBreakpointMd && $(this).parents('.page-sidebar-menu-hover-submenu').size() === 1) { // exit of hover sidebar menu
+            if (App.getViewPort().width >= resBreakpointMd && $(this).parents('.page-sidebar-menu-hover-submenu').length === 1) { // exit of hover sidebar menu
                 return;
             }
 
@@ -169,7 +169,7 @@ var Layout = function() {
                 dataType: "html",
                 success: function(res) {
 
-                    if (the.parents('li.open').size() === 0) {
+                    if (the.parents('li.open').length === 0) {
                         $('.page-sidebar-menu > li.open > a').click();
                     }
 

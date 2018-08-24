@@ -1039,6 +1039,6 @@ window.App = function() {
     };
 
 }();
-// (function(window) {    
-//    App.init(); // init metronic core componets
-// })(window);
+(function(window) {    
+   App.init(); // init metronic core componets
+})(window);

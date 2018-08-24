@@ -233,7 +233,7 @@ var Dashboard = function() {
             ];
 
 
-            if ($('#site_statistics').size() != 0) {
+            if ($('#site_statistics').length != 0) {
 
                 $('#site_statistics_loading').hide();
                 $('#site_statistics_content').show();
@@ -313,7 +313,7 @@ var Dashboard = function() {
             }
 
 
-            if ($('#site_activities').size() != 0) {
+            if ($('#site_activities').length != 0) {
                 //site activities
                 var previousPoint2 = null;
                 $('#site_activities_loading').hide();
@@ -502,7 +502,7 @@ var Dashboard = function() {
         },
 
         initMorisCharts: function() {
-            if (Morris.EventEmitter && $('#sales_statistics').size() > 0) {
+            if (Morris.EventEmitter && $('#sales_statistics').length > 0) {
                 // Use Morris.Area instead of Morris.Line
                 dashboardMainChart = Morris.Area({
                     element: 'sales_statistics',
@@ -670,7 +670,7 @@ var Dashboard = function() {
         },
 
         initAmChart1: function() {
-            if (typeof(AmCharts) === 'undefined' || $('#dashboard_amchart_1').size() === 0) {
+            if (typeof(AmCharts) === 'undefined' || $('#dashboard_amchart_1').length === 0) {
                 return;
             }
 
@@ -885,7 +885,7 @@ var Dashboard = function() {
         },
 
         initAmChart2: function() {
-            if (typeof(AmCharts) === 'undefined' || $('#dashboard_amchart_2').size() === 0) {
+            if (typeof(AmCharts) === 'undefined' || $('#dashboard_amchart_2').length === 0) {
                 return;
             }
 
@@ -1161,7 +1161,7 @@ var Dashboard = function() {
         },
 
         initAmChart3: function() {
-            if (typeof(AmCharts) === 'undefined' || $('#dashboard_amchart_3').size() === 0) {
+            if (typeof(AmCharts) === 'undefined' || $('#dashboard_amchart_3').length === 0) {
                 return;
             }
 
@@ -1251,7 +1251,7 @@ var Dashboard = function() {
         },
 
         initAmChart4: function() {
-            if (typeof(AmCharts) === 'undefined' || $('#dashboard_amchart_4').size() === 0) {
+            if (typeof(AmCharts) === 'undefined' || $('#dashboard_amchart_4').length === 0) {
                 return;
             }
 
@@ -1304,7 +1304,7 @@ var Dashboard = function() {
         },
 
         initWorldMapStats: function() {
-            if ($('#mapplic').size() === 0) {
+            if ($('#mapplic').length === 0) {
                 return;
             }
 

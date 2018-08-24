@@ -44,7 +44,7 @@ var ChartsFlotcharts = function() {
             //Basic Chart
 
             function chart1() {
-                if ($('#chart_1').size() != 1) {
+                if ($('#chart_1').length != 1) {
                     return;
                 }
 
@@ -118,7 +118,7 @@ var ChartsFlotcharts = function() {
             //Interactive Chart
 
             function chart2() {
-                if ($('#chart_2').size() != 1) {
+                if ($('#chart_2').length != 1) {
                     return;
                 }
 
@@ -287,7 +287,7 @@ var ChartsFlotcharts = function() {
             //Tracking Curves
 
             function chart3() {
-                if ($('#chart_3').size() != 1) {
+                if ($('#chart_3').length != 1) {
                     return;
                 }
                 //tracking curves:
@@ -381,7 +381,7 @@ var ChartsFlotcharts = function() {
             //Dynamic Chart
 
             function chart4() {
-                if ($('#chart_4').size() != 1) {
+                if ($('#chart_4').length != 1) {
                     return;
                 }
                 //server load
@@ -433,7 +433,7 @@ var ChartsFlotcharts = function() {
             //bars with controls
 
             function chart5() {
-                if ($('#chart_5').size() != 1) {
+                if ($('#chart_5').length != 1) {
                     return;
                 }
                 var d1 = [];
@@ -571,7 +571,7 @@ var ChartsFlotcharts = function() {
                 }
             };
 
-            if ($('#chart_1_1').size() !== 0) {
+            if ($('#chart_1_1').length !== 0) {
                 $.plot($("#chart_1_1"), [{
                     data: data,
                     lines: {
@@ -611,7 +611,7 @@ var ChartsFlotcharts = function() {
                 }
             };
 
-            if ($('#chart_1_2').size() !== 0) {
+            if ($('#chart_1_2').length !== 0) {
                 $.plot($("#chart_1_2"), [data1], options);
             }
         },
@@ -630,7 +630,7 @@ var ChartsFlotcharts = function() {
             }
 
             // DEFAULT
-            if ($('#pie_chart').size() !== 0) {
+            if ($('#pie_chart').length !== 0) {
                 $.plot($("#pie_chart"), data, {
                     series: {
                         pie: {
@@ -641,7 +641,7 @@ var ChartsFlotcharts = function() {
             }
 
             // GRAPH 1
-            if ($('#pie_chart_1').size() !== 0) {
+            if ($('#pie_chart_1').length !== 0) {
                 $.plot($("#pie_chart_1"), data, {
                     series: {
                         pie: {
@@ -655,7 +655,7 @@ var ChartsFlotcharts = function() {
             }
 
             // GRAPH 2
-            if ($('#pie_chart_2').size() !== 0) {
+            if ($('#pie_chart_2').length !== 0) {
                 $.plot($("#pie_chart_2"), data, {
                     series: {
                         pie: {
@@ -680,7 +680,7 @@ var ChartsFlotcharts = function() {
             }
 
             // GRAPH 3
-            if ($('#pie_chart_3').size() !== 0) {
+            if ($('#pie_chart_3').length !== 0) {
                 $.plot($("#pie_chart_3"), data, {
                     series: {
                         pie: {
@@ -705,7 +705,7 @@ var ChartsFlotcharts = function() {
             }
 
             // GRAPH 4
-            if ($('#pie_chart_4').size() !== 0) {
+            if ($('#pie_chart_4').length !== 0) {
                 $.plot($("#pie_chart_4"), data, {
                     series: {
                         pie: {
@@ -731,7 +731,7 @@ var ChartsFlotcharts = function() {
             }
 
             // GRAPH 5
-            if ($('#pie_chart_5').size() !== 0) {
+            if ($('#pie_chart_5').length !== 0) {
                 $.plot($("#pie_chart_5"), data, {
                     series: {
                         pie: {
@@ -757,7 +757,7 @@ var ChartsFlotcharts = function() {
             }
 
             // GRAPH 6
-            if ($('#pie_chart_6').size() !== 0) {
+            if ($('#pie_chart_6').length !== 0) {
                 $.plot($("#pie_chart_6"), data, {
                     series: {
                         pie: {
@@ -780,7 +780,7 @@ var ChartsFlotcharts = function() {
             }
 
             // GRAPH 7
-            if ($('#pie_chart_7').size() !== 0) {
+            if ($('#pie_chart_7').length !== 0) {
                 $.plot($("#pie_chart_7"), data, {
                     series: {
                         pie: {
@@ -798,7 +798,7 @@ var ChartsFlotcharts = function() {
             }
 
             // GRAPH 8
-            if ($('#pie_chart_8').size() !== 0) {
+            if ($('#pie_chart_8').length !== 0) {
                 $.plot($("#pie_chart_8"), data, {
                     series: {
                         pie: {
@@ -820,7 +820,7 @@ var ChartsFlotcharts = function() {
             }
 
             // GRAPH 9
-            if ($('#pie_chart_9').size() !== 0) {
+            if ($('#pie_chart_9').length !== 0) {
                 $.plot($("#pie_chart_9"), data, {
                     series: {
                         pie: {
@@ -850,7 +850,7 @@ var ChartsFlotcharts = function() {
             }
 
             // DONUT
-            if ($('#donut').size() !== 0) {
+            if ($('#donut').length !== 0) {
                 $.plot($("#donut"), data, {
                     series: {
                         pie: {
@@ -862,7 +862,7 @@ var ChartsFlotcharts = function() {
             }
 
             // INTERACTIVE
-            if ($('#interactive').size() !== 0) {
+            if ($('#interactive').length !== 0) {
                 $.plot($("#interactive"), data, {
                     series: {
                         pie: {

@@ -1,4 +1,8 @@
 {
     "/js/admin/pages/sample.min.js": "/js/admin/pages/sample.min.js",
-    "/css/admin/pages/sample.min.css": "/css/admin/pages/sample.min.css"
+    "/css/admin/pages/sample.min.css": "/css/admin/pages/sample.min.css",
+    "/css/admin/pages/login.min.css": "/css/admin/pages/login.min.css",
+    "/css/admin/pages/dashboard.min.css": "/css/admin/pages/dashboard.min.css",
+    "/js/admin/pages/dashboard.min.js": "/js/admin/pages/dashboard.min.js",
+    "/js/admin/pages/login.min.js": "/js/admin/pages/login.min.js"
 }

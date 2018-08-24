@@ -5,7 +5,7 @@ var ComponentsEditors = function () {
             return;
         }
 
-        if ($('.wysihtml5').size() > 0) {
+        if ($('.wysihtml5').length > 0) {
             $('.wysihtml5').wysihtml5({
                 "stylesheets": ["../assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
             });
