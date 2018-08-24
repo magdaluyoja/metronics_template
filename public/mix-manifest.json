@@ -3,6 +3,10 @@
     "/css/admin/pages/sample.min.css": "/css/admin/pages/sample.min.css",
     "/css/admin/pages/login.min.css": "/css/admin/pages/login.min.css",
     "/css/admin/pages/dashboard.min.css": "/css/admin/pages/dashboard.min.css",
+    "/css/admin/pages/profile.min.css": "/css/admin/pages/profile.min.css",
+    "/css/admin/pages/profile-settings.min.css": "/css/admin/pages/profile-settings.min.css",
+    "/js/admin/pages/profile.min.js": "/js/admin/pages/profile.min.js",
+    "/js/admin/pages/profile-settings.min.js": "/js/admin/pages/profile-settings.min.js",
     "/js/admin/pages/dashboard.min.js": "/js/admin/pages/dashboard.min.js",
     "/js/admin/pages/login.min.js": "/js/admin/pages/login.min.js"
 }

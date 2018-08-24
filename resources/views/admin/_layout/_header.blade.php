@@ -1,7 +1,7 @@
 <div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner ">
         <div class="page-logo">
-            <a href="index.html">
+            <a href="/admin">
                 <img src="/assets/admin/layouts/layout/img/logo.png" alt="logo" class="logo-default" /> 
             </a>
         </div>
@@ -305,7 +305,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="page_user_profile_1.html">
+                            <a href="/admin/profile">
                                 <i class="icon-user"></i> My Profile </a>
                         </li>
                         <li>

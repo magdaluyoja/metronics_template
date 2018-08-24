@@ -22,9 +22,15 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
 	Route::prefix('admin')->group(function () {
-	    Route::resource('content','Admin\ContentController');
-	    Route::post('/content/delete-attachment', 'Admin\ContentController@deleteAttachment')->name('deleteAttach');
+		
 	    Route::get('/', 'Admin\AdminPageController@getDashboard')->name('admin');
+
+	    Route::prefix('profile')->group(function () {
+
+		   	Route::get("/","Admin\ProfileController@getProfileOverview");
+		   	Route::get("settings","Admin\ProfileController@getProfileSettings");
+		});
+
+	    Route::post("upload-temp","Admin\UploadController@uploadTmp")->name("uploadTemp");
 	});
-    // Route::get('/admin', 'Admin\DashboardController@getDashboard')->name('admin');
 });

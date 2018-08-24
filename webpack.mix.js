@@ -20,4 +20,10 @@ mix
 
    .sass('public/assets/admin/sass/pages/dashboard.min.scss', 'public/css/admin/pages')
    .js('public/assets/admin/js/pages/dashboard.js','public/js/admin/pages/dashboard.min.js')
+
+   .sass('public/assets/admin/sass/pages/profile.min.scss', 'public/css/admin/pages')
+   .js('public/assets/admin/js/pages/profile.js','public/js/admin/pages/profile.min.js')
+
+   .sass('public/assets/admin/sass/pages/profile-settings.min.scss', 'public/css/admin/pages')
+   .js('public/assets/admin/js/pages/profile-settings.js','public/js/admin/pages/profile-settings.min.js')
    ;

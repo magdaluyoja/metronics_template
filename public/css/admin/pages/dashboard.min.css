@@ -44316,15 +44316,33 @@ Page Loading
 
 /* here you can put your own css to customize and override the theme */
 
+.block-centered {
+  display: block !important;
+  margin: auto !important;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  color: white;
+  /*padding: 5px 10px;*/
+  display: inline-block;
+  width: 100px;
+  height: 29px;
+  margin-bottom: 0px !important;
+}
+
 @media (max-width: 480px) {
   .login .content {
     width: 300px !important;
   }
-}
-
-.block-centered {
-  display: block !important;
-  margin: auto !important;
 }
 
 @media (min-width: 992px) {

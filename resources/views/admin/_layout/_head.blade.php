@@ -7,7 +7,6 @@
 
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
 
-<link href="/assets/admin/layouts/layout/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color">
 <link rel="shortcut icon" href="favicon.ico" /> 
 
 <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
