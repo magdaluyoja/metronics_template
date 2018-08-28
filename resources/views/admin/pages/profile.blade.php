@@ -2,7 +2,7 @@
 @section('title', ' | Profile')
 @section('css')
    <link href="/css/admin/pages/profile.min.css" rel="stylesheet" type="text/css" />
-   <link href="/assets/admin/layouts/layout/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color">
+   <link href="/assets/admin/layouts/layout/css/themes/{{(Auth::user()->theme) ? Auth::user()->theme : 'blue'}}.min.css" rel="stylesheet" type="text/css" id="style_color">
 @endsection
 @section('content')
     <div class="page-bar">
@@ -57,12 +57,12 @@
                 <div class="portlet light profile-sidebar-portlet ">
                     <!-- SIDEBAR USERPIC -->
                     <div class="profile-userpic">
-                        <img src="/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt=""> </div>
+                        <img src="/uploads/images/{{Auth::user()->profile_pic}}" class="img-responsive" alt=""> </div>
                     <!-- END SIDEBAR USERPIC -->
                     <!-- SIDEBAR USER TITLE -->
                     <div class="profile-usertitle">
-                        <div class="profile-usertitle-name"> Marcus Doe </div>
-                        <div class="profile-usertitle-job"> Developer </div>
+                        <div class="profile-usertitle-name"> {{ Auth::user()->first_name}}  {{ Auth::user()->last_name}} </div>
+                        <div class="profile-usertitle-job"> {{ Auth::user()->username}} </div>
                     </div>
                     <!-- END SIDEBAR USER TITLE -->
                     <!-- SIDEBAR BUTTONS -->
@@ -75,7 +75,7 @@
                     <div class="profile-usermenu">
                         <ul class="nav">
                             <li class="active">
-                                <a href="page_user_profile_1.html">
+                                <a href="/admin/profile">
                                     <i class="icon-home"></i> Overview </a>
                             </li>
                             <li>
@@ -83,7 +83,7 @@
                                     <i class="icon-settings"></i> Account Settings </a>
                             </li>
                             <li>
-                                <a href="page_user_profile_1_help.html">
+                                <a href="/admin/profile/help">
                                     <i class="icon-info"></i> Help </a>
                             </li>
                         </ul>

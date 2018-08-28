@@ -4,6 +4,9 @@
 	}
 	Data.init = function(formData){
 		this.formData = formData || {};
+		this.fileTypes = {
+			'img':['jpg','jpeg','png']
+		};
 	}
 	Data.prototype = {
 		toJson:function(){
@@ -32,7 +35,7 @@
 					$('#loading_modal').modal("show");
 				},
 				success:function(response){
-					console.log("Submit Data Response: " + response);
+					console.log("Submit Data Response: " + response.data);
 					if(response.success){
 						$('#loading_modal').modal('hide');
 						if(response.msg){
@@ -53,7 +56,45 @@
 						}
 					}
 					
-				}
+				},
+			});
+		},
+		uplaodAttachment:function(submitType,formAction,jsonData,object,action,actionIfFalse,objectIfFalse){
+			var self = this;
+			$.ajax({
+				dataType: 'json',
+		        type:submitType,
+		        url: formAction,
+		        data:jsonData,
+		        contentType: false,
+				beforeSend:function(){
+					$('#loading_modal').modal("show");
+				},
+				success:function(response){
+					console.log("Submit Data Response: " + response.data);
+					if(response.success){
+						$('#loading_modal').modal('hide');
+						if(response.msg){
+							$M("success", "Success!", response.msg).showToastrMsg();
+						}
+						if(action){
+							window[object]()[action](response.data);
+						}
+					}else{
+						$('#loading_modal').modal('hide');
+						$M("error", "Error!", self.getError(response.error)).showToastrMsg();
+						if(actionIfFalse){
+							if(objectIfFalse){
+								window[objectIfFalse]()[actionIfFalse](response.data);
+							}else{
+								window[object]()[action](response.data);
+							}
+						}
+					}
+					
+				},
+				cache: false,
+			    processData: false
 			});
 		},
 		uploadTmp:function(submitType,formAction,formData,object,action,extra_param){
@@ -92,24 +133,24 @@
 			$("#img-"+section).attr("src","/uploads/tmp/"+data.filename+"?"+d.getTime());
 			$("."+section+" #hdnAttachments"+section).val(data.filename);
 		},
-		validateAttachment:function(types, attachment){
+		validateAttachment:function(type, attachment){
 			var files = "";
 			var filenames = "";
 			var errors = "";
-			if(attachment.files.length > 0){
-				for (var i = 0; i < attachment.files.length; ++i) {
-				  	var name = attachment.files.item(i).name;
-				  	var size = attachment.files.item(i).size;
-				  	var filetype = name.split('.').pop();
-				  	if(!types.includes(filetype)){
-				  		errors += "<p>Invalid file, please select JPG or PNG image files.</p>" ;
-				  	}
-				  	if(size > 2000000){
-				  		errors += "<p>File size exceeds maximum file size of 2MB.</p>" ;
-				  	}
+			if(attachment.files){
+				if(attachment.files.length > 0){
+					for (var i = 0; i < attachment.files.length; ++i) {
+					  	var name = attachment.files.item(i).name;
+					  	var size = attachment.files.item(i).size;
+					  	var filetype = name.split('.').pop();
+					  	if(!this.fileTypes[type].includes(filetype)){
+					  		errors += "<div><strong>"+(i+1)+".</strong> Invalid file, please select JPG or PNG image files.</div>" ;
+					  	}
+					  	if(size > 2000000){
+					  		errors += "<div><strong>"+(i+2)+".</strong> File size exceeds maximum file size of 2MB.</div>" ;
+					  	}
+					}
 				}
-			}else{
-				errors += "<p>Please select a file.</p>" ;
 			}
 			return errors;
 		},

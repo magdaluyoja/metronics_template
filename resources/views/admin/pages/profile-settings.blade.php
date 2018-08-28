@@ -2,7 +2,7 @@
 @section('title', ' | Profile Settings')
 @section('css')
    <link href="/css/admin/pages/profile-settings.min.css" rel="stylesheet" type="text/css" />
-   <link href="/assets/admin/layouts/layout/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color">
+   <link href="/assets/admin/layouts/layout/css/themes/{{(Auth::user()->theme) ? Auth::user()->theme : 'blue'}}.min.css" rel="stylesheet" type="text/css" id="style_color">
 @endsection
 @section('content')
     <div class="page-bar">
@@ -57,12 +57,12 @@
                 <div class="portlet light profile-sidebar-portlet ">
                     <!-- SIDEBAR USERPIC -->
                     <div class="profile-userpic">
-                        <img src="/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt=""> </div>
+                        <img src="/uploads/images/{{Auth::user()->profile_pic}}" class="img-responsive profile-img" alt=""> </div>
                     <!-- END SIDEBAR USERPIC -->
                     <!-- SIDEBAR USER TITLE -->
                     <div class="profile-usertitle">
-                        <div class="profile-usertitle-name"> Marcus Doe </div>
-                        <div class="profile-usertitle-job"> Developer </div>
+                        <div class="profile-usertitle-name profile-name">  {{ Auth::user()->first_name}}  {{ Auth::user()->last_name}} </div>
+                        <div class="profile-usertitle-job profile-username"> {{Auth::user()->username}} </div>
                     </div>
                     <!-- END SIDEBAR USER TITLE -->
                     <!-- SIDEBAR BUTTONS -->
@@ -75,15 +75,15 @@
                     <div class="profile-usermenu">
                         <ul class="nav">
                             <li>
-                                <a href="page_user_profile_1.html">
+                                <a href="/admin/profile">
                                     <i class="icon-home"></i> Overview </a>
                             </li>
                             <li class="active">
-                                <a href="page_user_profile_1_account.html">
+                                <a href="/admin/profile/settings">
                                     <i class="icon-settings"></i> Account Settings </a>
                             </li>
                             <li>
-                                <a href="page_user_profile_1_help.html">
+                                <a href="/admin/profile/help">
                                     <i class="icon-info"></i> Help </a>
                             </li>
                         </ul>
@@ -110,7 +110,7 @@
                     </div>
                     <!-- END STAT -->
                     <div>
-                        <h4 class="profile-desc-title">About Marcus Doe</h4>
+                        <h4 class="profile-desc-title profile-name"></h4>
                         <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
                         <div class="margin-top-20 profile-desc-link">
                             <i class="fa fa-globe"></i>
@@ -158,19 +158,21 @@
                                 <div class="tab-content">
                                     <!-- PERSONAL INFO TAB -->
                                     <div class="tab-pane active" id="tab_1_1">
-                                        <form role="form" action="#">
+                                        <form role="form" method="POST" action="{{ route('update_profile', Auth::user()->id) }}" id="frm-profile">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="_method" value="PUT">
                                             <div class="form-group">
                                                 <label class="control-label">First Name</label>
-                                                <input type="text" placeholder="John" class="form-control" /> </div>
+                                                <input type="text" placeholder="First name" id="first_name" name="first_name" class="form-control" value="{{ Auth::user()->first_name }}" /> </div>
                                             <div class="form-group">
                                                 <label class="control-label">Last Name</label>
-                                                <input type="text" placeholder="Doe" class="form-control" /> </div>
+                                                <input type="text" placeholder="Last name" id="last_name" name="last_name" class="form-control" value="{{ Auth::user()->last_name }}" /> </div>
                                             <div class="form-group">
-                                                <label class="control-label">Mobile Number</label>
-                                                <input type="text" placeholder="+1 646 580 DEMO (6284)" class="form-control" /> </div>
+                                                <label class="control-label">Username</label>
+                                                <input type="text"  placeholder="Username" id="username" name="username" class="form-control" value="{{ Auth::user()->username }}"  /> </div>
                                             <div class="form-group">
-                                                <label class="control-label">Interests</label>
-                                                <input type="text" placeholder="Design, Web etc." class="form-control" /> </div>
+                                                <label class="control-label">Email Address</label>
+                                                <input type="text"  placeholder="Email" id="email" name="email" class="form-control" value="{{ Auth::user()->email }}" /> </div>
                                             <div class="form-group">
                                                 <label class="control-label">Occupation</label>
                                                 <input type="text" placeholder="Web Developer" class="form-control" /> </div>
@@ -182,8 +184,7 @@
                                                 <label class="control-label">Website Url</label>
                                                 <input type="text" placeholder="http://www.mywebsite.com" class="form-control" /> </div>
                                             <div class="margiv-top-10">
-                                                <a href="javascript:;" class="btn green"> Save Changes </a>
-                                                <a href="javascript:;" class="btn default"> Cancel </a>
+                                                <input type="submit" name="btn-submit" class="btn green" value="Update">
                                             </div>
                                         </form>
                                     </div>
@@ -192,27 +193,28 @@
                                     <div class="tab-pane" id="tab_1_2">
                                         <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
                                             eiusmod. </p>
-                                        <form action="#" role="form">
+                                        <form id="frm-picture" novalidate action="{{route("update_picture")}}"  enctype="multipart/form-data">
+                                            {!! csrf_field() !!}
                                             <div class="form-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                                                        <img src="{{(Auth::user()->profile_pic) ? '/uploads/images/'.Auth::user()->profile_pic : 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image' }}" alt="Profile Picture" /> </div>
                                                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
                                                     <div>
                                                         <span class="btn default btn-file">
                                                             <span class="fileinput-new"> Select image </span>
                                                             <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..."> </span>
+                                                            <input type="file" id="tmp_attachments" name="tmp_attachments" data-filetype='img'> </span>
                                                         <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                                     </div>
                                                 </div>
                                                 <div class="clearfix margin-top-10">
                                                     <span class="label label-danger">NOTE! </span>
-                                                    <span>Attached image thumbnail is supported in Latest Firefox, Chrome, Opera, Safari and Internet Explorer 10 only </span>
+                                                    <span class="margin-left-10"> Attached image thumbnail is supported in Latest Firefox, Chrome, Opera, Safari and Internet Explorer 10 only </span>
                                                 </div>
                                             </div>
                                             <div class="margin-top-10">
-                                                <a href="javascript:;" class="btn green"> Submit </a>
+                                                <input type="submit" name="btn-submit" class="btn green" value="Submit">
                                                 <a href="javascript:;" class="btn default"> Cancel </a>
                                             </div>
                                         </form>
@@ -220,19 +222,22 @@
                                     <!-- END CHANGE AVATAR TAB -->
                                     <!-- CHANGE PASSWORD TAB -->
                                     <div class="tab-pane" id="tab_1_3">
-                                        <form action="#">
+                                         <form id="frm-password" novalidate action="{{route("updatePassword", Auth::user()->id)}}">
+                                            {{ csrf_field() }}
                                             <div class="form-group">
                                                 <label class="control-label">Current Password</label>
-                                                <input type="password" class="form-control" /> </div>
+                                                <input class="form-control" type="password" value="" id="old-password" name="old-password" required data-validation-required-message="This field is required">
+                                                <div class="help-block"></div>
                                             <div class="form-group">
                                                 <label class="control-label">New Password</label>
-                                                <input type="password" class="form-control" /> </div>
+                                                <input class="form-control passwords" type="password" value="" id="new_password" name="new_password" required data-validation-required-message="This field is required" disabled>
+                                                <div class="help-block"></div>
                                             <div class="form-group">
                                                 <label class="control-label">Re-type New Password</label>
-                                                <input type="password" class="form-control" /> </div>
+                                                <input class="form-control passwords" type="password" value="" id="confirm_new_password" name="confirm_new_password"  data-validation-match-match="new_password" disabled>
+                                                <div class="help-block"></div>
                                             <div class="margin-top-10">
-                                                <a href="javascript:;" class="btn green"> Change Password </a>
-                                                <a href="javascript:;" class="btn default"> Cancel </a>
+                                                <input type="submit" class="btn green" value="Change Password" >
                                             </div>
                                         </form>
                                     </div>

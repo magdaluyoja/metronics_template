@@ -21,6 +21,7 @@
                 	@include('admin._layout._theme-panel')
                 	@include('admin._partials._messages')
 					@yield('content')
+					@include('admin._partials._loading')
                 </div>
             </div>
             @include('admin._layout._quick-sidebar')

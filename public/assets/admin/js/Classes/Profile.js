@@ -15,9 +15,10 @@
 			return this.property;
 		},
 		reloadProfile:function(data){
+			console.log(data);
 			var d = new Date();
-			$(".profile_name").text(data.name);
-			$(".profile-img").attr("src","/uploads/images/"+data.hdnFileName+"?"+d.getTime());
+			if(data.first_name)$(".profile-name").text(data.first_name+" "+data.last_name)
+			if(data.filename)$(".profile-img").attr("src","/uploads/images/"+data.filename+"?"+d.getTime())
 		},
 		enablePassowrds:function(valid){
 			if(valid){

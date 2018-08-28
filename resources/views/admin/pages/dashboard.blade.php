@@ -2,7 +2,7 @@
 @section('title', 'Admin | Dashboard')
 @section('css')
    <link href="/css/admin/pages/dashboard.min.css" rel="stylesheet" type="text/css" />
-   <link href="/assets/admin/layouts/layout/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color">
+   <link href="/assets/admin/layouts/layout/css/themes/{{(Auth::user()->theme) ? Auth::user()->theme : 'blue'}}.min.css" rel="stylesheet" type="text/css" id="style_color">
 @endsection
 @section('content')
      <div class="page-bar">
